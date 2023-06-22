@@ -13,7 +13,7 @@
 <head>
     <link rel="stylesheet" href="styles.css">
 
-    <title>Buscar Producto</title>
+    <title>Buscar inmueble</title>
 </head>
 <body>
 <main>
@@ -24,7 +24,7 @@
         <ul>
             <li><a href="crearProducto.jsp">Crear Producto</a></li>
             <li><a href="crearCliente.jsp">Agregar Cliente</a></li>
-            <li><a href="buscarProducto.jsp" role="button">Busqueda de articulo</a></li>
+            <li><a href="buscarProducto.jsp" role="button">Busqueda de inmuebles</a></li>
         </ul>
     </nav>
     <article>

@@ -13,13 +13,11 @@ import java.io.IOException;
 @WebServlet(name = "EditarProductoServlet", value = "/editarProducto")
 public class EditarProductoServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String idProducto = request.getParameter("id");
-        String nombreProducto=request.getParameter("n");
-        String categoriaProducto=request.getParameter("c");
+        String tipoConstruccion = request.getParameter("tipo");
+        String ubicacion=request.getParameter("ubicacion");
         String precio=request.getParameter("p");
-        request.setAttribute("id", idProducto);
-        request.setAttribute("nombre", nombreProducto);
-        request.setAttribute("categoria",categoriaProducto);
+        request.setAttribute("tipo", tipoConstruccion);
+        request.setAttribute("ubicacion", ubicacion);
         request.setAttribute("precio",precio);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("editarProducto.jsp");
         requestDispatcher.forward(request, response);
@@ -29,13 +27,13 @@ public class EditarProductoServlet extends HttpServlet {
         int idProducto= Integer.parseInt(
                 !request.getParameter("id").isEmpty()?request.getParameter("id"):"0"
         );
-        String categoriaProducto= request.getParameter("tipoProducto");
-        String nombreProducto=request.getParameter("nombre");
+        String tipoConstruccion= request.getParameter("tipoProducto");
+        String ubicacion=request.getParameter("nombre");
         int precio= Integer.parseInt(
                 !request.getParameter("precio").isEmpty()?request.getParameter("precio"):"0"
         );
-        if(idProducto!=0 && !categoriaProducto.isEmpty() && !nombreProducto.isEmpty() && precio!=0){
-            Producto producto=new Producto(idProducto,nombreProducto,categoriaProducto,precio);
+        if(tipoConstruccion.isEmpty() && !ubicacion.isEmpty() && precio!=0){
+            Producto producto=new Producto(tipoConstruccion,ubicacion,precio);
             if(producto.modificarProducto()){
                 request.setAttribute("status","Fue modificado correctamente el producto");
             }else{

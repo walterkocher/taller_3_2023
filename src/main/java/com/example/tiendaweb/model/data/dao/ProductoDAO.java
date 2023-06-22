@@ -11,32 +11,32 @@ import java.util.ArrayList;
 
 public class ProductoDAO {
     public boolean registrarProducto(DSLContext query, Producto producto) {
-        String nombreProducto=producto.getNombreProducto();
-        String categoriaProducto=producto.getCategoriaProducto();
+        String tipoConstruccion=producto.getTipoConstruccion();
+        String ubicacion=producto.getUbicacion();
         int precio=producto.getPrecio();
         int result=query.insertInto(DSL.table("producto"),
-                DSL.field("cod_producto"),DSL.field("producto_nombre    "),DSL.field("categoria"),DSL.field("precio"))
-                .values(null,nombreProducto,categoriaProducto,precio)
+                DSL.field("tipo_construccion"),DSL.field("ubicacion    "),DSL.field("precio"))
+                .values(tipoConstruccion,ubicacion,precio)
                 .execute();
         DBConnector.closeConnection();
         return result==1;
     }
 
     public ArrayList<Producto> buscarProducto(DSLContext query, Producto producto) {
-        String nombreProducto=producto.getNombreProducto();
-        String categoriaProducto=producto.getCategoriaProducto();
+        String nombreProducto=producto.getTipoConstruccion();
         Result results = query
                 .select()
                 .from(DSL.table("producto"))
                 .where(DSL.field("producto_nombre").eq(nombreProducto)
-                        .or(DSL.field("categoria").eq(categoriaProducto)))
+                        .or(DSL.field("categoria").eq(nombreProducto)))
                 .fetch();
         ArrayList<Producto> productosEncontrados=new ArrayList<>();
         for (int i = 0; i < results.size(); i++) {
             productosEncontrados.add(new Producto(
-                    (Integer) results.getValue(i,"cod_producto"),
-                    (String) results.getValue(i,"producto_nombre"),
-                    results.getValue(i,"categoria").toString(),
+                    (String) results.getValue(i,"tipo_construccion"),
+
+                    (String) results.getValue(i,"ubicacion"),
+
                     (Integer) results.getValue(i,"precio")
             ));
         }
@@ -44,14 +44,13 @@ public class ProductoDAO {
     }
 
     public boolean modificarProducto(DSLContext query, Producto producto) {
-        int idProducto= producto.getIdProducto();
-        String nombreProducto=producto.getNombreProducto();
-        String categoriaProducto=producto.getCategoriaProducto();
+        String tipoConstruccion= producto.getTipoConstruccion();
+        String nombreProducto=producto.getUbicacion();
+
         int precio=producto.getPrecio();
-        int result=query.update(DSL.table("producto")).
-                set(DSL.field("producto_nombre"),nombreProducto).
-                set(DSL.field("categoria"),categoriaProducto).
-        set(DSL.field("precio"),precio).where(DSL.field("cod_producto").eq(idProducto))
+        int result=query.update(DSL.table("inmueble")).
+                set(DSL.field("ubicacion"),nombreProducto).
+        set(DSL.field("precio"),precio).where(DSL.field("tipo_construcion").eq(tipoConstruccion))
                 .execute();
         return result==1;
     }

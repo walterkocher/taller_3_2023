@@ -27,17 +27,8 @@
             <section class="e-product-form">
                 <h1>Editar producto seleccionado</h1>
                 <form action="editarProducto" method="post">
-                    <input name="id" type="text" hidden="hidden" value="${id}">
-                    <input name="nombre" placeholder="Nombre" type="text" value="${nombre}">
-                    <select name="tipoProducto" id="" p >
-                        <option value="0">Selecciona la categoria</option>
-                        <option value="1">Smartphone</option>
-                        <option value="2">Tablet</option>
-                        <option value="3">Notebook</option>
-                        <option value="4">Cable</option>
-                        <option value="5">Periferico</option>
-
-                    </select>
+                    <input name="tipo de construccion" type="text" hidden="hidden" value="${tipoConstruccion}">
+                    <input name="ubicacion" placeholder="Nombre" type="text" value="${ubicacion}">
                     <input type="number" name="precio" placeholder="$$$ Precio" value="${precio}">
                     <button type="submit">Editar</button>
                 </form>

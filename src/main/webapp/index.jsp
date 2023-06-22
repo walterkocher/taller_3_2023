@@ -12,9 +12,9 @@
         <li><strong><a href="index.jsp">Tienda Web</a></strong></li>
       </ul>
       <ul>
-        <li><a href="crearProducto.jsp">Crear Producto</a></li>
-        <li><a href="crearCliente.jsp">Agregar Cliente</a></li>
-        <li><a href="buscarProducto.jsp" role="button">Busqueda de articulo</a></li>
+        <li><a href="crearProducto.jsp">Agregar inmueble</a></li>
+        <li><a href="crearCliente.jsp">Agregar Vendedor</a></li>
+        <li><a href="buscarProducto.jsp" role="button">Busqueda de inmueble</a></li>
       </ul>
     </nav>
     <section class="p-welcome">
