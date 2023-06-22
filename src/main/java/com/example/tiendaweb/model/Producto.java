@@ -9,40 +9,30 @@ import java.sql.Connection;
 import java.util.ArrayList;
 
 public class Producto {
-    private int idProducto;
-    private String nombreProducto;
-    private String categoriaProducto;
+    private String tipoConstruccion;
+    private String ubicacion;
     private int precio;
 
-    public Producto(int idProducto,String nombreProducto, String categoriaProducto,int precio) {
-        this.idProducto=idProducto;
-        this.nombreProducto = nombreProducto;
-        this.categoriaProducto = categoriaProducto;
+    public Producto(String tipoConstruccion, String ubicacion, int precio) {
+        this.tipoConstruccion=tipoConstruccion;
+        this.ubicacion = ubicacion;
         this.precio=precio;
     }
 
-    public String getNombreProducto() {
-        return nombreProducto;
+    public String getUbicacion() {
+        return ubicacion;
     }
 
-    public void setNombreProducto(String nombreProducto) {
-        this.nombreProducto = nombreProducto;
+    public void setUbicacion(String ubicacion) {
+        this.ubicacion = ubicacion;
     }
 
-    public String getCategoriaProducto() {
-        return categoriaProducto;
+    public String getTipoConstruccion() {
+        return tipoConstruccion;
     }
 
-    public void setCategoriaProducto(String categoriaProducto) {
-        this.categoriaProducto = categoriaProducto;
-    }
-
-    public int getIdProducto() {
-        return idProducto;
-    }
-
-    public void setIdProducto(int idProducto) {
-        this.idProducto = idProducto;
+    public void setTipoConstruccion(String tipoConstruccion) {
+        this.tipoConstruccion = tipoConstruccion;
     }
 
     public int getPrecio() {
